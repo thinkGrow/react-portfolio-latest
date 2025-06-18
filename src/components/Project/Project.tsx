@@ -3,6 +3,7 @@ import { Button } from "@/components/retroui/Button";
 import { Tooltip } from "../retroui/Tooltip";
 import { FaGithub } from "react-icons/fa";
 import { SiSitecore } from "react-icons/si";
+import LazyImage from "@/components/Project/LazyImage";
 
 type ProjectProps = {
   title: string;
@@ -56,12 +57,15 @@ const Project = ({ title, description, items, image }: ProjectProps) => {
                   ))}
                 </ul>
               </div>
+              {/* <LazyImage src={image} alt={title} />; */}
+              {image && title && <LazyImage src={image} alt={title} />}
 
-              <div className="flex h-full items-center justify-center">
+
+              {/* <div className="flex h-full items-center justify-center">
                 {image && (
-                  <img src={image} alt={title} className="h-3/4 object-cover" />
+                  <img src={image} alt={title} className="h-3/4 object-cover" loading="lazy" />
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

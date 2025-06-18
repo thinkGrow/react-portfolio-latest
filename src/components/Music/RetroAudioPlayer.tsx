@@ -53,7 +53,7 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
         onMouseDown={handleMouseDown}
         className="cursor-move bg-[#145a4d] px-3 py-1 flex items-center justify-between text-xs font-bold select-none"
       >
-        <span>🎵 Retro Player</span>
+        <span>🎵 MP3 Player</span>
         <div className="flex items-center">
           {/* <span className="text-[#6ee7b7]">⬍</span> */}
           <button

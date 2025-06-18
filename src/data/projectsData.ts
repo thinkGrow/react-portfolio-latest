@@ -1,0 +1,34 @@
+const projectsData = [
+  {
+    "title": "Theatre Ticketing System",
+    "description": "A mobile-responsive platform for online & offline ticket sales, employee tracking, and admin dashboards. Designed for high-traffic Eid season usage.",
+    "image": "/assets/portfolio/ngenit.png",
+    "items": ["React", "TypeScript", "Tailwind", "NestJS", "Firebase"]
+  },
+  {
+    "title": "Sentiment Analysis of Medicine Reviews",
+    "description": "Analyzed user feedback on medicine to classify sentiments using NLP models. Implemented as part of an AI research project.",
+    "image": "/assets/portfolio/sentiment-analysis.png",
+    "items": ["Python", "NLTK", "Scikit-learn", "Jupyter", "Pandas"]
+  },
+  {
+    "title": "RNN-based Image Classifier",
+    "description": "Built a recurrent neural network to classify image sequences, exploring model performance across datasets.",
+    "image": "/assets/portfolio/rnn-thesis.png",
+    "items": ["PyTorch", "NumPy", "Matplotlib", "Jupyter"]
+  },
+  {
+    "title": "Portfolio Website",
+    "description": "A retro-styled personal portfolio built with React and RetroUI components. Fully responsive with animated transitions.",
+    "image": "/assets/portfolio/groceries.png",
+    "items": ["React", "TypeScript", "RetroUI", "Vite", "Tailwind"]
+  },
+  {
+    "title": "Election Data Visualizer",
+    "description": "Analyzed and visualized Australian election data with geospatial overlays and demographic filtering using R.",
+    "image": "/assets/portfolio/jatra.png",
+    "items": ["R", "ggplot2", "Tidyverse", "sf", "RMarkdown"]
+  }
+]
+
+export default projectsData;

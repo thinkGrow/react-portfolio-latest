@@ -13,13 +13,14 @@ const Projects = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("/projectsData.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch projects.");
-        return res.json();
+    import("@/data/projectsData")
+      .then((mod) => {
+        setProjects(mod.default);
       })
-      .then((data: ProjectType[]) => setProjects(data))
-      .catch((err) => setError(err.message))
+      .catch((err) => {
+        setError("Failed to load projects.");
+        console.error(err);
+      })
       .finally(() => setLoading(false));
   }, []);
 
