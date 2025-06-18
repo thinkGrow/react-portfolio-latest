@@ -28,7 +28,7 @@ const Projects = () => {
   if (error) return <p className="text-destructive">Error: {error}</p>;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-6 max-h-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 space-y-6 max-h-full px-4">
       {projects.map((project, index) => (
         <Project key={index} {...project} />
       ))}
