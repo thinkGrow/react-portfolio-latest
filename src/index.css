@@ -4,7 +4,6 @@
 
 /* styles.css */
 
-
 @theme {
   --font-head: "Archivo Black", sans-serif;
   --font-sans: "Space Grotesk", sans-serif;
@@ -40,6 +39,7 @@
   --card: #fff;
   --card-foreground: #000;
   --primary: #ffdb33;
+  /* --primary: #6ee7b7; */
   --primary-hover: #ffcc00;
   --primary-foreground: #000;
   --secondary: #000;

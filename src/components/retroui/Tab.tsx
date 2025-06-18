@@ -27,12 +27,15 @@ function TabsTriggerList({ children }: { children: React.ReactNode }) {
 function TabsTrigger({ children }: { children: React.ReactNode }) {
   return (
     <Tab
+      style={{ borderColor: "#6ee7b7" }}
       className={({ selected }) =>
         cn(
-          "flex text-center px-4 py-2 border border-border rounded font-head transition-all",
+          "flex text-center px-4 py-2 border rounded font-head transition-all",
+          "focus:outline-none focus:ring-0 focus-visible:ring-0 ring-0", //
           selected
-            ? "bg-primary text-primary-foreground"
-            : "bg-muted text-foreground hover:bg-muted/80"
+            ? "bg-[#257656] text-white"
+            : // ? "bg-[#061e15] text-white"
+              "bg-gray-300 text-foreground hover:bg-muted/80 border-border"
         )
       }
     >
