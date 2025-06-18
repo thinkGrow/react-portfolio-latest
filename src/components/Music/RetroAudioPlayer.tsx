@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 
 const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -21,32 +21,35 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
     setOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (dragging && playerRef.current) {
-      playerRef.current.style.left = `${e.clientX - offset.x}px`;
-      playerRef.current.style.top = `${e.clientY - offset.y}px`;
-    }
-  };
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (dragging && playerRef.current) {
+        playerRef.current.style.left = `${e.clientX - offset.x}px`;
+        playerRef.current.style.top = `${e.clientY - offset.y}px`;
+      }
+    },
+    [dragging, offset],
+  );
 
-  const handleMouseUp = () => setDragging(false);
+  const handleMouseUp = useCallback(() => {
+    setDragging(false);
+  }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-    
-  }, [dragging, offset]);
+  }, [handleMouseMove, handleMouseUp]);
 
   return (
     <div
       ref={playerRef}
-      className="absolute left-1/2 -translate-x-1/2 top-25 z-20 
+      className="absolute left-1/2 -translate-x-1/2 top-24 z-20 
                bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg 
                font-mono text-white text-sm"
-      // className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg font-mono text-white text-sm"
       style={{ width: "150px" }}
     >
       {/* Drag handle */}
@@ -55,45 +58,41 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
         className="cursor-move bg-[#145a4d] px-3 py-1 flex items-center justify-between text-xs font-bold select-none"
       >
         <span>🎵 MP3 Player</span>
-        <div className="flex items-center">
-          {/* <span className="text-[#6ee7b7]">⬍</span> */}
-          <button
-            onClick={onClose}
-            className="ml-2 text-white hover:text-red-400 font-bold"
-          >
-            ✖
-          </button>
-        </div>
+        <button
+          onClick={onClose}
+          className="ml-2 text-white hover:text-red-400 font-bold"
+        >
+          ✖
+        </button>
       </div>
 
       {/* Controls */}
       <div className="p-3 flex flex-col items-center gap-2">
         <audio ref={audioRef} src="/assets/music.mp3" preload="metadata" loop />
-
         <div className="flex gap-2">
           <button
             onClick={handlePlay}
             className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
           >
-            ▶ 
+            ▶
           </button>
           <button
             onClick={handlePause}
             className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
           >
-            ❚❚ 
+            ❚❚
           </button>
           <button
             onClick={handleStop}
             className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
           >
-            ■ 
+            ■
           </button>
         </div>
+
+        {/* Volume */}
         <div className="w-full flex items-center gap-2 mt-2">
-          <label htmlFor="volume" className="text-xs">
-            🔊
-          </label>
+          <label htmlFor="volume" className="text-xs">🔊</label>
           <input
             id="volume"
             type="range"
