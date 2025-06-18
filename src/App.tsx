@@ -1,7 +1,4 @@
 import React, { useRef, useState } from "react";
-// import Swal from "sweetalert2";
-// import { cn } from "@/lib/utils";
-
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Tabs,
@@ -30,24 +27,6 @@ function App() {
   const safeTabIndex = currentTabIndex === -1 ? 0 : currentTabIndex;
   const [showPlayer, setShowPlayer] = useState(true);
 
-  // const Swal = require("sweetalert2");
-  // const showAlert = () => {
-  //   Swal.fire({
-  //     title: "Do you want to save the changes?",
-  //     showDenyButton: true,
-  //     showCancelButton: true,
-  //     confirmButtonText: "Save",
-  //     denyButtonText: `Don't save`,
-  //   }).then((result) => {
-  //     /* Read more about isConfirmed, isDenied below */
-  //     if (result.isConfirmed) {
-  //       Swal.fire("Saved!", "", "success");
-  //     } else if (result.isDenied) {
-  //       Swal.fire("Changes are not saved", "", "info");
-  //     }
-  //   });
-  // };
-
   const handleTabChange = (index: number) => {
     navigate(tabRoutes[index]);
     setShowMenu(false); // close menu on tab click
@@ -55,12 +34,7 @@ function App() {
 
   return (
     <div className="bg-background text-foreground min-h-screen lowercase">
-      {/* <button onClick={showAlert} className="btn">
-        Show Alert
-      </button>
-      <button className="btn" onClick={() => audioRef.current?.play()}>
-        Play Music
-      </button> */}
+      <h1>vercel test</h1>
       <audio ref={audioRef} loop>
         <source src="/assets/music.m4a" type="audio/mp4" />
       </audio>
@@ -122,9 +96,7 @@ function App() {
                 )}
               </div>
               <TabsContent>
-                {/* 🔊 Insert here — music player just below the tabs */}
                 <Skills />
-                {/* 👇 Inline player positioned below the tabs */}
               </TabsContent>
               <TabsContent className="mb-10">
                 <Projects />
