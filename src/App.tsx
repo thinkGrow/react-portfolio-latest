@@ -34,7 +34,6 @@ function App() {
 
   return (
     <div className="bg-background text-foreground min-h-screen lowercase">
-      <h1>vercel test</h1>
       <audio ref={audioRef} loop>
         <source src="/assets/music.m4a" type="audio/mp4" />
       </audio>
