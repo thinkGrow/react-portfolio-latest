@@ -8,7 +8,7 @@ export type SkillProps = {
 
 const Skill = ({ title, description, items }: SkillProps) => {
   return (
-    <Card className="rounded-2xl w-full sm:w-[48%] lg:w-[30%]">
+    <Card className="rounded-2xl min-w-full sm:w-[48%]">
       <Card.Header>
         <Card.Title>{title}</Card.Title>
         <Card.Description>{description}</Card.Description>
