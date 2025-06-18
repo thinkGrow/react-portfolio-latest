@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import Swal from "sweetalert2";
 // import { cn } from "@/lib/utils";
 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -15,16 +16,36 @@ import Services from "./components/Services/Services";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import TerminalFooter from "./components/TerminalFooter/TerminalFooter";
+import RetroAudioPlayer from "./components/Music/RetroAudioPlayer";
 
 const tabRoutes = ["/skills", "/projects", "/services", "/about", "/contact"];
 
 function App() {
+  const audioRef = useRef<HTMLAudioElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = React.useState(false);
 
   const currentTabIndex = tabRoutes.indexOf(location.pathname);
   const safeTabIndex = currentTabIndex === -1 ? 0 : currentTabIndex;
+
+  // const Swal = require("sweetalert2");
+  const showAlert = () => {
+    Swal.fire({
+      title: "Do you want to save the changes?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Saved!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+  };
 
   const handleTabChange = (index: number) => {
     navigate(tabRoutes[index]);
@@ -33,6 +54,16 @@ function App() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
+      <RetroAudioPlayer></RetroAudioPlayer>
+      {/* <button onClick={showAlert} className="btn">
+        Show Alert
+      </button>
+      <button className="btn" onClick={() => audioRef.current?.play()}>
+        Play Music
+      </button> */}
+      <audio ref={audioRef} loop>
+        <source src="/assets/music.m4a" type="audio/mp4" />
+      </audio>
       <div className="w-full px-4 py-10 mb-30">
         <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
           {/* Mobile hamburger button */}

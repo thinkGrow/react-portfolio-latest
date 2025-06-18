@@ -2,10 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>rubait reshad</title>
+
+    <!-- Title animation script -->
+    <script>
+      const originalTitle = "rubait reshad";
+      let i = 0;
+      setInterval(() => {
+        const visibleTitle = originalTitle.slice(0, i) + (i % 2 === 0 ? "|" : "");
+        document.title = visibleTitle;
+        i = (i + 1) % (originalTitle.length + 1);
+      }, 300);
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
