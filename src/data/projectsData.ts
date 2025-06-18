@@ -21,7 +21,7 @@ const projectsData = [
       "Tensorboard",
     ],
     gitHub: "https://github.com/thinkGrow/recurNet-image-classification",
-    pdf: "https://drive.google.com/file/d/1SDlD3_woTVnufhb9N7mB4JkD-vBgSNz6/view",
+    live: "https://drive.google.com/file/d/1SDlD3_woTVnufhb9N7mB4JkD-vBgSNz6/view",
   },
   {
     title: "NGen IT",
@@ -72,8 +72,8 @@ const projectsData = [
       "Developed a Unity game in C#, featuring projectile mechanics, collision detection, and level design.",
     image: "/assets/portfolio/angry-bird.png",
     items: ["Unity", "C#"],
-    gitHub: "https://github.com/thinkGrow/groceries",
-    live: "https://thinkgrow.github.io/groceries/",
+    gitHub: "https://github.com/thinkGrow/pissedB-irdsFull?tab=readme-ov-file",
+    live: "https://drive.google.com/file/d/1ZPpVn9HGgpwpnpNs-KrhY_TmeCvHabNA/view?fbclid=IwAR09A96EUjL2lws_pZfcgyaY9qHA1RN_ERSmqb2ZDZ-Y2wQGTQT3WO5HnkY",
   },
   {
     title: "Election Data Visualizer",

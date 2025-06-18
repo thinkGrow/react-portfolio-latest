@@ -19,13 +19,13 @@ const tooltipContentVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  },
+  }
 );
 
 // Tooltip wrapper with delayDuration
 const Tooltip = ({
   children,
-  delayDuration = 150, // Fast trigger
+  delayDuration = 100, // Fast trigger
   ...props
 }: React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> & {
   delayDuration?: number;
@@ -52,7 +52,7 @@ const TooltipContent = React.forwardRef<
         tooltipContentVariants({
           variant,
           className,
-        }),
+        })
       )}
       {...props}
     />

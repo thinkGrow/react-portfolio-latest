@@ -37,6 +37,7 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
+    
   }, [dragging, offset]);
 
   return (
