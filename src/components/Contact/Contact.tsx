@@ -16,7 +16,7 @@ const Contact = () => {
 
   return (
     <div className="bg-[#9bbc0f] text-[#0f380f] p-6 max-w-md mx-auto border-4 border-black rounded-lg shadow-lg font-mono h-150">
-      <h2 className="text-2xl mb-4 text-center">📟 GameBoy Contact</h2>
+      <h2 className="text-2xl mb-4 text-center">📟 Contact</h2>
       {!submitted ? (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <label>
