@@ -20,7 +20,7 @@ const TreeItem = ({ node, depth = 0 }: Props) => {
     <div className="font-mono lowercase">
       <div
         onClick={handleToggle}
-        className="flex items-center cursor-pointer hover:text-primary transition"
+        className="flex items-center cursor-pointer hover:text-green-300 transition"
       >
         <span className="mr-1">{indent}├──</span>
         {node.type === "folder" ? (

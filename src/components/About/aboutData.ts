@@ -7,6 +7,27 @@ export type TreeNode = {
 
 export const aboutData: TreeNode[] = [
   {
+    label: "personal info",
+    type: "folder",
+    children: [
+      {
+        label: "nickname",
+        type: "folder",
+        children: [{ label: "rubait-reshad.txt", type: "file" }],
+      },
+      {
+        label: "official name",
+        type: "folder",
+        children: [{ label: "md-rubaut-reshed-chowdhury.txt", type: "file" }],
+      },
+      {
+        label: "location",
+        type: "folder",
+        children: [{ label: "bangladesh.txt", type: "file" }],
+      },
+    ],
+  },
+  {
     label: "education",
     type: "folder",
     children: [
@@ -19,8 +40,9 @@ export const aboutData: TreeNode[] = [
     label: "experience",
     type: "folder",
     children: [
-      { label: "backend-dev-ngenit.txt", type: "file" },
+      { label: "full-stack-laravel.intern", type: "file" },
       { label: "teacher-o-a-undergrad-level-math-cs.txt", type: "file" },
+      { label: "sports-journalist.txt", type: "file" },
     ],
   },
   {
