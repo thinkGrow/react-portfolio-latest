@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const RetroAudioPlayer = () => {
+const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState(false);
@@ -42,7 +42,10 @@ const RetroAudioPlayer = () => {
   return (
     <div
       ref={playerRef}
-      className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg font-mono text-white text-sm"
+      className="absolute left-1/2 -translate-x-1/2 top-25 z-20 
+               bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg 
+               font-mono text-white text-sm"
+      // className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg font-mono text-white text-sm"
       style={{ width: "250px" }}
     >
       {/* Drag handle */}
@@ -51,7 +54,15 @@ const RetroAudioPlayer = () => {
         className="cursor-move bg-[#145a4d] px-3 py-1 flex items-center justify-between text-xs font-bold select-none"
       >
         <span>🎵 Retro Player</span>
-        <span className="text-[#6ee7b7]">⬍</span>
+        <div className="flex items-center">
+          {/* <span className="text-[#6ee7b7]">⬍</span> */}
+          <button
+            onClick={onClose}
+            className="ml-2 text-white hover:text-red-400 font-bold"
+          >
+            ✖
+          </button>
+        </div>
       </div>
 
       {/* Controls */}
@@ -77,6 +88,25 @@ const RetroAudioPlayer = () => {
           >
             ■ Stop
           </button>
+        </div>
+        <div className="w-full flex items-center gap-2 mt-2">
+          <label htmlFor="volume" className="text-xs">
+            🔊
+          </label>
+          <input
+            id="volume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            defaultValue="1"
+            onChange={(e) => {
+              if (audioRef.current) {
+                audioRef.current.volume = parseFloat(e.target.value);
+              }
+            }}
+            className="w-full accent-[#6ee7b7]"
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import Swal from "sweetalert2";
+import React, { useRef, useState } from "react";
+// import Swal from "sweetalert2";
 // import { cn } from "@/lib/utils";
 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -28,24 +28,25 @@ function App() {
 
   const currentTabIndex = tabRoutes.indexOf(location.pathname);
   const safeTabIndex = currentTabIndex === -1 ? 0 : currentTabIndex;
+  const [showPlayer, setShowPlayer] = useState(true);
 
   // const Swal = require("sweetalert2");
-  const showAlert = () => {
-    Swal.fire({
-      title: "Do you want to save the changes?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Save",
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire("Saved!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("Changes are not saved", "", "info");
-      }
-    });
-  };
+  // const showAlert = () => {
+  //   Swal.fire({
+  //     title: "Do you want to save the changes?",
+  //     showDenyButton: true,
+  //     showCancelButton: true,
+  //     confirmButtonText: "Save",
+  //     denyButtonText: `Don't save`,
+  //   }).then((result) => {
+  //     /* Read more about isConfirmed, isDenied below */
+  //     if (result.isConfirmed) {
+  //       Swal.fire("Saved!", "", "success");
+  //     } else if (result.isDenied) {
+  //       Swal.fire("Changes are not saved", "", "info");
+  //     }
+  //   });
+  // };
 
   const handleTabChange = (index: number) => {
     navigate(tabRoutes[index]);
@@ -54,7 +55,6 @@ function App() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      <RetroAudioPlayer></RetroAudioPlayer>
       {/* <button onClick={showAlert} className="btn">
         Show Alert
       </button>
@@ -116,8 +116,15 @@ function App() {
           {/* Always render panels */}
           <div className="pt-5">
             <TabsPanels>
+              <div className="flex justify-center">
+                {showPlayer && (
+                  <RetroAudioPlayer onClose={() => setShowPlayer(false)} />
+                )}
+              </div>
               <TabsContent>
+                {/* 🔊 Insert here — music player just below the tabs */}
                 <Skills />
+                {/* 👇 Inline player positioned below the tabs */}
               </TabsContent>
               <TabsContent className="mb-10">
                 <Projects />
