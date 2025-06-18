@@ -1,10 +1,17 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Tabs, TabsPanels, TabsTrigger, TabsTriggerList, TabsContent } from "@/components/retroui/Tab";
+import {
+  Tabs,
+  TabsPanels,
+  TabsTrigger,
+  TabsTriggerList,
+  TabsContent,
+} from "@/components/retroui/Tab";
 import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Services from "./components/Services/Services";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
+import TerminalFooter from "./components/TerminalFooter/TerminalFooter";
 
 const tabRoutes = ["/skills", "/projects", "/services", "/about", "/contact"];
 
@@ -20,34 +27,37 @@ function App() {
   };
 
   return (
-    <div className="w-full min-h-screen px-4 py-10 bg-background text-foreground">
-      <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
-        <TabsTriggerList>
-          <TabsTrigger>Skills</TabsTrigger>
-          <TabsTrigger>Projects</TabsTrigger>
-          <TabsTrigger>Services</TabsTrigger>
-          <TabsTrigger>About</TabsTrigger>
-          <TabsTrigger>Contact</TabsTrigger>
-        </TabsTriggerList>
-
-        <TabsPanels>
-          <TabsContent>
-            <Skills />
-          </TabsContent>
-          <TabsContent>
-            <Projects />
-          </TabsContent>
-          <TabsContent>
-            <Services />
-          </TabsContent>
-          <TabsContent>
-            <About />
-          </TabsContent>
-          <TabsContent>
-            <Contact />
-          </TabsContent>
-        </TabsPanels>
-      </Tabs>
+    <div>
+      <div className="w-full min-h-screen px-4 py-10 bg-background text-foreground">
+        <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
+          <TabsTriggerList>
+            <TabsTrigger>skills</TabsTrigger>
+            <TabsTrigger>projects</TabsTrigger>
+            <TabsTrigger>services</TabsTrigger>
+            <TabsTrigger>about</TabsTrigger>
+            <TabsTrigger>contact</TabsTrigger>
+          </TabsTriggerList>
+          <br />
+          <TabsPanels>
+            <TabsContent>
+              <Skills />
+            </TabsContent>
+            <TabsContent>
+              <Projects />
+            </TabsContent>
+            <TabsContent>
+              <Services />
+            </TabsContent>
+            <TabsContent>
+              <About />
+            </TabsContent>
+            <TabsContent>
+              <Contact />
+            </TabsContent>
+          </TabsPanels>
+        </Tabs>
+      </div>
+      <TerminalFooter></TerminalFooter>
     </div>
   );
 }
