@@ -14,7 +14,7 @@ type ProjectProps = {
 const Project = ({ title, description, items, image }: ProjectProps) => {
   console.log(image);
   return (
-    <Card className="rounded-xl h-120 md:h-40 p-4">
+    <Card className="rounded-xl h-120 lg:h-42 px-4 flex items-center pt-14">
       <div className="flex">
         <div className="h-50">
           {image && (

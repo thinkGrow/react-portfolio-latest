@@ -13,16 +13,18 @@ const Skills = () => {
 
   return (
     <>
+      {" "}
+      <div className="space-y-4 px-4 md:h-150">
         <h1 className="text-2xl">frontend dev</h1>
         <h2 className="text-xl">
-          skills - because you're here to see what I can build for you, not what
-          I do at my leisure time
+          skills
         </h2>
-        <div className="grid grid-cols-4 gap-10 px-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {skills.map((skill, index) => (
             <Skill key={index} {...skill} />
           ))}
         </div>
+      </div>
     </>
   );
 };

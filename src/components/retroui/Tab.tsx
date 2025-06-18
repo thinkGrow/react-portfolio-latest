@@ -45,18 +45,22 @@ function TabsPanels({ children }: { children: React.ReactNode }) {
   return <Tab.Panels className="w-full px-4">{children}</Tab.Panels>;
 }
 
-function TabsContent({ children }: { children: React.ReactNode }) {
+function TabsContent({
+  children,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <Tab.Panel className="rounded-xl bg-card py-6 text-sm text-muted-foreground shadow-md h-[70vh]">
+    <Tab.Panel
+      className={cn(
+        "rounded-xl bg-card py-6 text-sm text-muted-foreground shadow-md",
+        className
+      )}
+      {...props}
+    >
       {children}
     </Tab.Panel>
   );
 }
 
-export {
-  Tabs,
-  TabsTriggerList,
-  TabsTrigger,
-  TabsPanels,
-  TabsContent,
-};
+export { Tabs, TabsTriggerList, TabsTrigger, TabsPanels, TabsContent };

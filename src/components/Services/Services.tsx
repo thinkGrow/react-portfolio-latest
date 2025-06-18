@@ -2,7 +2,7 @@ import { Text } from "../retroui/Text";
 
 const Services = () => {
   return (
-    <div className="space-y-4 lowercase text-center list-style-none">
+    <div className="space-y-4 lowercase text-center list-style-none h-150">
       <Text as="h2" className="text-xl font-bold">
         services
       </Text>
