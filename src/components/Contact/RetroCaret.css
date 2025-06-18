@@ -1,0 +1,16 @@
+input,
+textarea {
+  caret-color: #6ee7b7;
+  caret-shape: block;
+  animation: pixel-caret-blink 0.s steps(1) infinite;
+}
+
+@keyframes pixel-caret-blink {
+  0%,
+  100% {
+    caret-color: transparent;
+  }
+  50% {
+    caret-color: #6ee7b7;
+  }
+}
