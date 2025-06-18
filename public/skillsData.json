@@ -1,0 +1,57 @@
+[
+  {
+    "title": "web",
+    "description": "mern-focused front-end dev",
+    "items": [
+      "tailwind",
+      "javascript",
+      "firebase",
+      "react",
+      "typescript",
+      "API"
+    ]
+  },
+  {
+    "title": "tools",
+    "description": "dev environment",
+    "items": [
+      "vs code",
+      "git & gitHub",
+      "figma",
+      "rstudio",
+      "jupyter notebook",
+      "google colab",
+      "anaconda",
+      "tensorBoard",
+      "pyTorch",
+      "pandas"
+    ]
+  },
+  {
+    "title": "ai/ml",
+    "description": "dev environment",
+    "items": [
+      "python",
+      "r",
+      "pyTorch",
+      "computer vision",
+      "deep learning",
+      "data exploration",
+      "data processing",
+      "visualization",
+      "train/test",
+      "evaluation"
+    ]
+  },
+  {
+    "title": "languages",
+    "description": "dev environment",
+    "items": [
+      "python",
+      "r",
+      "javascript",
+      "typescript",
+      "c++"
+    ]
+  }
+]
