@@ -57,7 +57,9 @@ function App() {
           </TabsPanels>
         </Tabs>
       </div>
-      <TerminalFooter></TerminalFooter>
+      <div className="mt-[250vh] md:mt-0">
+        <TerminalFooter></TerminalFooter>
+      </div>
     </div>
   );
 }

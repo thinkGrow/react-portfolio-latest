@@ -9,13 +9,14 @@ type ProjectProps = {
 
 const Project = ({ title, description, items, image }: ProjectProps) => {
   return (
-    <Card className="flex rounded-xl overflow-hidden h-100 p-4">
-      <div>
+    <Card className="flex rounded-xl h-120 md:h-50 p-4">
+      <div className="h-50">
         {image && (
           <img
+            
             src={image}
             alt={title}
-            className="w-full h-full object-cover p-4"
+            className="h-3/4 object-cover p-4"
           />
         )}
       </div>
@@ -25,8 +26,8 @@ const Project = ({ title, description, items, image }: ProjectProps) => {
           <Card.Title>{title}</Card.Title>
           <Card.Description>{description}</Card.Description>
         </Card.Header>
-        <Card.Content>
-          <ul className="list-disc list-inside pl-2">
+        <Card.Content className="m-0 p-0">
+          <ul className="flex flex-col md:flex-row gap-2 list-disc list-inside pl-2">
             {items.map((tech, index) => (
               <li key={index}>{tech}</li>
             ))}

@@ -18,7 +18,7 @@ function Tabs({ children, defaultIndex, onChange }: TabsProps) {
 
 function TabsTriggerList({ children }: { children: React.ReactNode }) {
   return (
-    <Tab.List className="flex w-full justify-between gap-4 px-4 font-sans text-sm mb-4">
+    <Tab.List className="flex flex-col md:flex-row w-full justify-between gap-4 px-4 font-sans text-sm mb-4">
       {children}
     </Tab.List>
   );
@@ -47,7 +47,7 @@ function TabsPanels({ children }: { children: React.ReactNode }) {
 
 function TabsContent({ children }: { children: React.ReactNode }) {
   return (
-    <Tab.Panel className="rounded-xl bg-card p-6 text-sm text-muted-foreground shadow-md">
+    <Tab.Panel className="rounded-xl bg-card py-6 text-sm text-muted-foreground shadow-md h-[75vh]">
       {children}
     </Tab.Panel>
   );
