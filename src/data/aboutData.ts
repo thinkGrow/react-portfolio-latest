@@ -52,6 +52,7 @@ export const aboutData: TreeNode[] = [
       { label: "web-dev.txt", type: "file" },
       { label: "ai-research.txt", type: "file" },
       { label: "football.txt", type: "file" },
+      { label: "hip-hop-music.txt", type: "file" },
     ],
   },
 ];

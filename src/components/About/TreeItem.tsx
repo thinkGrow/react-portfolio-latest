@@ -1,7 +1,11 @@
 // components/About/TreeItem.tsx
 import { useState } from "react";
-import { FolderIcon, FolderOpenIcon, DocumentIcon } from "@heroicons/react/24/outline";
-import type { TreeNode } from "./aboutData";
+import {
+  FolderIcon,
+  FolderOpenIcon,
+  DocumentIcon,
+} from "@heroicons/react/24/outline";
+import type { TreeNode } from "../../data/aboutData";
 
 type Props = {
   node: TreeNode;
@@ -24,7 +28,11 @@ const TreeItem = ({ node, depth = 0 }: Props) => {
       >
         <span className="mr-1">{indent}├──</span>
         {node.type === "folder" ? (
-          isOpen ? <FolderOpenIcon className="w-4 h-4 mr-2" /> : <FolderIcon className="w-4 h-4 mr-2" />
+          isOpen ? (
+            <FolderOpenIcon className="w-4 h-4 mr-2" />
+          ) : (
+            <FolderIcon className="w-4 h-4 mr-2" />
+          )
         ) : (
           <DocumentIcon className="w-4 h-4 mr-2" />
         )}

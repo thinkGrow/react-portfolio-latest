@@ -1,6 +1,6 @@
 // components/About/About.tsx
 import TreeItem from "./TreeItem";
-import { aboutData } from "./aboutData";
+import { aboutData } from "../../data/aboutData";
 
 const About = () => {
   return (
