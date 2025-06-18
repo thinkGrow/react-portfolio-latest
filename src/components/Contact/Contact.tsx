@@ -1,74 +1,45 @@
-import { useState } from "react";
-import "./RetroCaret.css";
+import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
     <div className="bg-[#257656] text-white p-6 max-w-md mx-auto border-4 border-[#6ee7b7] rounded-lg shadow-lg font-mono h-150">
-      <h2 className="text-2xl mb-4 text-center">📟 Contact</h2>
-      {!submitted ? (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <label>
-            NAME:
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full bg-[#145a4d] border-2 border-[#6ee7b7] px-2 py-1 mt-1 focus:outline-none"
-              required
-            />
-          </label>
-          <label>
-            EMAIL:
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full bg-[#145a4d] border-2 border-[#6ee7b7] px-2 py-1 mt-1 focus:outline-none"
-              required
-            />
-          </label>
-          <label>
-            MESSAGE:
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              className="w-full bg-[#145a4d] border-2 border-[#6ee7b7] px-2 py-1 mt-1 h-24 focus:outline-none"
-              required
-            ></textarea>
-          </label>
-          <button
-            type="submit"
-            className="bg-[#6ee7b7] text-black px-4 py-2 border-2 border-black hover:bg-white transition"
-          >
-            SEND
-          </button>
-        </form>
-      ) : (
-        <div className="text-center">
-          <p>✅ MESSAGE SENT</p>
-          <p className="mt-2">
-            Thanks, {form.name}! Expect a pixel-perfect reply soon.
-          </p>
-        </div>
-      )}
+      <h2 className="text-2xl mb-6 text-center flex justify-center items-center gap-2">
+        <img src="/assets/scyther.gif" alt="logo" className="w-6 h-6" />
+        contact
+      </h2>
+
+      <div className="flex flex-col gap-4 items-center text-lg">
+        <a
+          href="https://wa.me/8801741515595?text=Thank%20you%20for%20messaging%20me%2C%20I%20will%20get%20back%20to%20you%20as%20soon%20as%20I%20can%2C%20cheers."
+          target="_blank"
+          rel="noreferrer"
+          className="w-full text-center bg-[#145a4d] hover:bg-[#1c6e5e] border-2 border-[#6ee7b7] px-4 py-2 flex justify-center items-center gap-2 transition text-md"
+        >
+          <FaWhatsapp /> Chat on WhatsApp <br /> (Most Available)
+        </a>
+        <a
+          href="https://github.com/thinkGrow"
+          target="_blank"
+          rel="noreferrer"
+          className="w-full bg-[#145a4d] hover:bg-[#1c6e5e] border-2 border-[#6ee7b7] px-4 py-2 flex justify-center items-center gap-2 transition"
+        >
+          <FaGithub /> github.com/thinkGrow
+        </a>
+        <a
+          href="https://www.linkedin.com/in/rubaut-reshed/"
+          target="_blank"
+          rel="noreferrer"
+          className="w-full bg-[#145a4d] hover:bg-[#1c6e5e] border-2 border-[#6ee7b7] px-4 py-2 flex justify-center items-center gap-2 transition"
+        >
+          <FaLinkedin /> linkedin.com/in/rubaut-reshed
+        </a>
+        <a
+          href="mailto:rubaitreshad@email.com"
+          className="w-full bg-[#145a4d] hover:bg-[#1c6e5e] border-2 border-[#6ee7b7] px-4 py-2 flex justify-center items-center gap-2 transition"
+        >
+          <FaEnvelope /> rubaitreshad@email.com
+        </a>
+      </div>
     </div>
   );
 };

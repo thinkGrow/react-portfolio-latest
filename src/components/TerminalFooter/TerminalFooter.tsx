@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const TerminalFooter = () => {
   return (
@@ -6,29 +6,35 @@ const TerminalFooter = () => {
       <div className="max-w-screen-lg px-4">
         <p>
           rubait@portfolio:~${" "}
-          <span className="text-white">echo "thanks for scrolling"</span>
+          <span className="text-white">echo "thanks for dropping by"</span>
         </p>
         <p>`{">"}` built using react + tailwind + typescript + shadcn</p>
         <div className="mt-2 flex gap-4 text-white">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/thinkGrow"
             target="_blank"
             rel="noreferrer"
           >
             <FaGithub className="hover:text-green-300" />
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://www.linkedin.com/in/rubaut-reshed/"
             target="_blank"
             rel="noreferrer"
           >
             <FaLinkedin className="hover:text-green-300" />
           </a>
-          <a href="mailto:your@email.com">
+          <a href="mailto:rubaitreshad@email.com">
             <FaEnvelope className="hover:text-green-300" />
           </a>
+          <a
+            href="https://wa.me/8801741515595"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaWhatsapp className="hover:text-green-300" />
+          </a>
         </div>
-        {/* <p className="animate-pulse mt-1">▍</p> */}
       </div>
     </footer>
   );

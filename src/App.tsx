@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
+    <div className="bg-background text-foreground min-h-screen lowercase">
       {/* <button onClick={showAlert} className="btn">
         Show Alert
       </button>
