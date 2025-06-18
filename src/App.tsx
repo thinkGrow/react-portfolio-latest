@@ -1,3 +1,6 @@
+import React from "react";
+// import { cn } from "@/lib/utils";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Tabs,
@@ -18,48 +21,92 @@ const tabRoutes = ["/skills", "/projects", "/services", "/about", "/contact"];
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [showMenu, setShowMenu] = React.useState(false);
 
   const currentTabIndex = tabRoutes.indexOf(location.pathname);
   const safeTabIndex = currentTabIndex === -1 ? 0 : currentTabIndex;
 
   const handleTabChange = (index: number) => {
     navigate(tabRoutes[index]);
+    setShowMenu(false); // close menu on tab click
   };
 
   return (
-    <div>
-      <div className="w-full px-4 py-10 bg-background text-foreground mb-30">
+    <div className="bg-background text-foreground min-h-screen">
+      <div className="w-full px-4 py-10 mb-30">
         <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
+          {/* Mobile hamburger button */}
+          <div className="md:hidden mb-4">
+            <button
+              onClick={() => setShowMenu((prev) => !prev)}
+              className="px-3 py-2 border border-border rounded bg-muted"
+            >
+              <div className="space-y-1">
+                <span className="block w-5 h-0.5 bg-foreground"></span>
+                <span className="block w-5 h-0.5 bg-foreground"></span>
+                <span className="block w-5 h-0.5 bg-foreground"></span>
+              </div>
+            </button>
+          </div>
+
+          {/* Tabs menu (responsive) */}
           <TabsTriggerList>
-            <TabsTrigger>skills</TabsTrigger>
-            <TabsTrigger>projects</TabsTrigger>
-            <TabsTrigger>services</TabsTrigger>
-            <TabsTrigger>about</TabsTrigger>
-            <TabsTrigger>contact</TabsTrigger>
+            {/* Desktop triggers */}
+            <div className="hidden md:flex w-full justify-between">
+              <TabsTrigger>skills</TabsTrigger>
+              <TabsTrigger>projects</TabsTrigger>
+              <TabsTrigger>services</TabsTrigger>
+              <TabsTrigger>about</TabsTrigger>
+              <TabsTrigger>contact</TabsTrigger>
+            </div>
+
+            {/* Mobile dropdown triggers */}
+            {showMenu && (
+              <div className="flex flex-col md:hidden mt-2 gap-2 bg-card border border-border rounded-md px-3 py-2 w-48 mx-auto shadow-md z-10">
+                <TabsTrigger>
+                  <span className="text-xs px-2 py-1">skills</span>
+                </TabsTrigger>
+                <TabsTrigger>
+                  <span className="text-xs px-2 py-1">projects</span>
+                </TabsTrigger>
+                <TabsTrigger>
+                  <span className="text-xs px-2 py-1">services</span>
+                </TabsTrigger>
+                <TabsTrigger>
+                  <span className="text-xs px-2 py-1">about</span>
+                </TabsTrigger>
+                <TabsTrigger>
+                  <span className="text-xs px-2 py-1">contact</span>
+                </TabsTrigger>
+              </div>
+            )}
           </TabsTriggerList>
-          <br />
-          <TabsPanels>
-            <TabsContent>
-              <Skills />
-            </TabsContent>
-            <TabsContent className="mb-10">
-              <Projects />
-            </TabsContent>
-            <TabsContent>
-              <Services />
-            </TabsContent>
-            <TabsContent>
-              <About />
-            </TabsContent>
-            <TabsContent>
-              <Contact />
-            </TabsContent>
-          </TabsPanels>
+
+          {/* Always render panels */}
+          <div className="pt-5">
+            <TabsPanels>
+              <TabsContent>
+                <Skills />
+              </TabsContent>
+              <TabsContent className="mb-10">
+                <Projects />
+              </TabsContent>
+              <TabsContent>
+                <Services />
+              </TabsContent>
+              <TabsContent>
+                <About />
+              </TabsContent>
+              <TabsContent>
+                <Contact />
+              </TabsContent>
+            </TabsPanels>
+          </div>
         </Tabs>
       </div>
 
       <div className="md:mt-0">
-        <TerminalFooter></TerminalFooter>
+        <TerminalFooter />
       </div>
     </div>
   );
