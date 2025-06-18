@@ -56,7 +56,7 @@ const RetroAudioPlayer = () => {
 
       {/* Controls */}
       <div className="p-3 flex flex-col items-center gap-2">
-        <audio ref={audioRef} src="/assets/music.mp3" preload="auto" loop />
+        <audio ref={audioRef} src="/assets/music.mp3" preload="metadata" loop />
 
         <div className="flex gap-2">
           <button
