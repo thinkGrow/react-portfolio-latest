@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect, useCallback } from "react";
 
 const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
@@ -23,12 +22,15 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
     setOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (dragging && playerRef.current) {
-      playerRef.current.style.left = `${e.clientX - offset.x}px`;
-      playerRef.current.style.top = `${e.clientY - offset.y}px`;
-    }
-  }, [dragging, offset]);
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (dragging && playerRef.current) {
+        playerRef.current.style.left = `${e.clientX - offset.x}px`;
+        playerRef.current.style.top = `${e.clientY - offset.y}px`;
+      }
+    },
+    [dragging, offset]
+  );
 
   const handleMouseUp = useCallback(() => {
     setDragging(false);
@@ -55,6 +57,9 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
       className="absolute left-1/2 -translate-x-1/2 top-24 z-20 bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg font-mono text-white text-sm"
       style={{ width: minimized ? "auto" : "150px" }}
     >
+      {/* Always-mounted audio element */}
+      <audio ref={audioRef} src="/assets/music.mp3" preload="metadata" loop />
+
       {/* Drag handle */}
       <div
         onMouseDown={handleMouseDown}
@@ -68,6 +73,11 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
                 onClick={(e) => {
                   e.stopPropagation();
                   setMinimized(true);
+
+                  // Ensure playback continues
+                  if (audioRef.current && !audioRef.current.paused) {
+                    audioRef.current.play().catch(() => {});
+                  }
                 }}
                 className="text-white hover:text-yellow-300 font-bold"
               >
@@ -94,9 +104,9 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
         )}
       </div>
 
+      {/* Controls only show when not minimized */}
       {!minimized && (
         <div className="p-3 flex flex-col items-center gap-2">
-          <audio ref={audioRef} src="/assets/music.mp3" preload="metadata" loop />
           <div className="flex gap-2">
             <button
               onClick={handlePlay}
@@ -118,7 +128,7 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
             </button>
           </div>
 
-          {/* Volume */}
+          {/* Volume control */}
           <div className="w-full flex items-center gap-2 mt-2">
             <label htmlFor="volume" className="text-xs">🔊</label>
             <input
