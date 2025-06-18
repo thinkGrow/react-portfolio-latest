@@ -1,21 +1,27 @@
-import "./App.css";
-// import { Button } from "@/components/retroui/Button";
-import {
-  Tabs,
-  TabsPanels,
-  TabsTrigger,
-  TabsContent,
-  TabsTriggerList,
-} from "@/components/retroui/Tab";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Tabs, TabsPanels, TabsTrigger, TabsTriggerList, TabsContent } from "@/components/retroui/Tab";
 import Skills from "./components/Skills/Skills";
-// import { Text } from "./components/retroui/Text";
 import Projects from "./components/Projects/Projects";
 import Services from "./components/Services/Services";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+
+const tabRoutes = ["/skills", "/projects", "/services", "/about", "/contact"];
 
 function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const currentTabIndex = tabRoutes.indexOf(location.pathname);
+  const safeTabIndex = currentTabIndex === -1 ? 0 : currentTabIndex;
+
+  const handleTabChange = (index: number) => {
+    navigate(tabRoutes[index]);
+  };
+
   return (
     <div className="w-full min-h-screen px-4 py-10 bg-background text-foreground">
-      <Tabs>
+      <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
         <TabsTriggerList>
           <TabsTrigger>Skills</TabsTrigger>
           <TabsTrigger>Projects</TabsTrigger>
@@ -26,26 +32,19 @@ function App() {
 
         <TabsPanels>
           <TabsContent>
-            <h1 className="text-2xl">frontend dev</h1>
-            <h2 className="text-xl">
-              skills - because you're here to see what I can build for you, not
-              what I do at my leisure time
-            </h2>
-            <Skills></Skills>
-          </TabsContent>
-          {/* Projects */}
-          <TabsContent>
-            <Projects></Projects>
-          </TabsContent>
-          {/* Services */}
-          <TabsContent>
-            <Services></Services>
+            <Skills />
           </TabsContent>
           <TabsContent>
-            <p className="text-lg">This is the about section!</p>
+            <Projects />
           </TabsContent>
           <TabsContent>
-            <p className="text-lg">This is the contact section!</p>
+            <Services />
+          </TabsContent>
+          <TabsContent>
+            <About />
+          </TabsContent>
+          <TabsContent>
+            <Contact />
           </TabsContent>
         </TabsPanels>
       </Tabs>

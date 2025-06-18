@@ -12,11 +12,18 @@ const Skills = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-6">
-      {skills.map((skill, index) => (
-        <Skill key={index} {...skill} />
-      ))}
-    </div>
+    <>
+      <h1 className="text-2xl">frontend dev</h1>
+      <h2 className="text-xl">
+        skills - because you're here to see what I can build for you, not what I
+        do at my leisure time
+      </h2>
+      <div className="flex flex-wrap gap-6">
+        {skills.map((skill, index) => (
+          <Skill key={index} {...skill} />
+        ))}
+      </div>
+    </>
   );
 };
 

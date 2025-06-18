@@ -2,8 +2,18 @@ import * as React from "react";
 import { Tab } from "@headlessui/react";
 import { cn } from "@/lib/utils";
 
-function Tabs({ children }: { children: React.ReactNode }) {
-  return <Tab.Group>{children}</Tab.Group>;
+type TabsProps = {
+  children: React.ReactNode;
+  defaultIndex?: number;
+  onChange?: (index: number) => void;
+};
+
+function Tabs({ children, defaultIndex, onChange }: TabsProps) {
+  return (
+    <Tab.Group defaultIndex={defaultIndex} onChange={onChange}>
+      {children}
+    </Tab.Group>
+  );
 }
 
 function TabsTriggerList({ children }: { children: React.ReactNode }) {
