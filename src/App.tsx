@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div>
-      <div className="w-full px-4 py-10 bg-background text-foreground">
+      <div className="w-full px-4 py-10 bg-background text-foreground mb-30">
         <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
           <TabsTriggerList>
             <TabsTrigger>skills</TabsTrigger>
@@ -42,7 +42,7 @@ function App() {
             <TabsContent>
               <Skills />
             </TabsContent>
-            <TabsContent>
+            <TabsContent className="mb-10">
               <Projects />
             </TabsContent>
             <TabsContent>
@@ -57,6 +57,7 @@ function App() {
           </TabsPanels>
         </Tabs>
       </div>
+
       <div className="md:mt-0">
         <TerminalFooter></TerminalFooter>
       </div>
