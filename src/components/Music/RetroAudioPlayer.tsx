@@ -54,16 +54,27 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
   return (
     <div
       ref={playerRef}
-      className="absolute left-1/2 -translate-x-1/2 top-24 z-20 bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg font-mono text-white text-sm"
-      style={{ width: minimized ? "auto" : "150px" }}
+      className={`absolute z-20 ${
+        minimized
+          ? "bg-transparent border-none shadow-none"
+          : "bg-[#257656] border-4 border-[#6ee7b7] shadow-lg"
+      } rounded-md font-mono text-white text-sm`}
+      style={{
+        width: minimized ? "auto" : "150px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        top: "6rem",
+      }}
     >
-      {/* Always-mounted audio element */}
+      {/* Always-mounted audio */}
       <audio ref={audioRef} src="/assets/music.mp3" preload="metadata" loop />
 
       {/* Drag handle */}
       <div
         onMouseDown={handleMouseDown}
-        className="cursor-move bg-[#145a4d] px-3 py-1 flex items-center justify-between text-xs font-bold select-none"
+        className={`cursor-move ${
+          minimized ? "" : "bg-[#145a4d]"
+        } px-3 py-1 flex items-center justify-between text-xs font-bold select-none`}
       >
         {!minimized ? (
           <>
@@ -73,8 +84,6 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
                 onClick={(e) => {
                   e.stopPropagation();
                   setMinimized(true);
-
-                  // Ensure playback continues
                   if (audioRef.current && !audioRef.current.paused) {
                     audioRef.current.play().catch(() => {});
                   }
@@ -92,19 +101,19 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
             </div>
           </>
         ) : (
-          <img
-            src="/assets/scyther.gif"
-            alt="Scyther"
-            className="w-6 h-6 mx-auto cursor-pointer"
+          <div
             onClick={(e) => {
               e.stopPropagation();
               setMinimized(false);
             }}
-          />
+            className="w-14 h-14 rounded-full bg-[#145a4d] border-4 border-[#6ee7b7] flex items-center justify-center cursor-pointer shadow-md hover:scale-105 transition-transform"
+          >
+            <img src="/assets/scyther.gif" alt="Scyther" className="w-8 h-8" />
+          </div>
         )}
       </div>
 
-      {/* Controls only show when not minimized */}
+      {/* Audio controls (only when not minimized) */}
       {!minimized && (
         <div className="p-3 flex flex-col items-center gap-2">
           <div className="flex gap-2">
@@ -128,9 +137,11 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
             </button>
           </div>
 
-          {/* Volume control */}
+          {/* Volume Control */}
           <div className="w-full flex items-center gap-2 mt-2">
-            <label htmlFor="volume" className="text-xs">🔊</label>
+            <label htmlFor="volume" className="text-xs">
+              🔊
+            </label>
             <input
               id="volume"
               type="range"
