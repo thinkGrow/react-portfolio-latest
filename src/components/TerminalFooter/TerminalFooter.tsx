@@ -2,7 +2,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const TerminalFooter = () => {
   return (
-    <footer className="fixed bottom-0 w-full bg-black text-green-400 font-mono text-sm px-4 shadow-inner z-50 py-10">
+    <footer className="fixed bottom-0 w-full bg-black text-green-400 font-mono text-sm px-4 shadow-inner z-5 py-10">
       <div className="max-w-screen-lg px-4">
         <p>
           rubait@portfolio:~${" "}

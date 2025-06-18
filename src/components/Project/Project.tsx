@@ -49,7 +49,7 @@ const Project = ({ title, description, items, image }: ProjectProps) => {
           <div className="text-sm px-3 h-[65%]">
             <div className="flex justify-between h-full">
               {/* desc + bulletpoints */}
-              <div className="flex flex-col justify-around h-full gap-10 p-1">
+              <div className="flex flex-col justify-around h-full gap-10 p-1 w-3/4">
                 <div>{description}</div>
                 <ul className="flex flex-col md:flex-row gap-2 list-disc list-inside text-sm">
                   {items.map((tech, index) => (
