@@ -46,7 +46,7 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
                bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg 
                font-mono text-white text-sm"
       // className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg font-mono text-white text-sm"
-      style={{ width: "250px" }}
+      style={{ width: "150px" }}
     >
       {/* Drag handle */}
       <div
@@ -74,19 +74,19 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
             onClick={handlePlay}
             className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
           >
-            ▶ Play
+            ▶ 
           </button>
           <button
             onClick={handlePause}
             className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
           >
-            ❚❚ Pause
+            ❚❚ 
           </button>
           <button
             onClick={handleStop}
             className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
           >
-            ■ Stop
+            ■ 
           </button>
         </div>
         <div className="w-full flex items-center gap-2 mt-2">
