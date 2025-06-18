@@ -10,6 +10,7 @@ import {
 import Skills from "./components/Skills/Skills";
 // import { Text } from "./components/retroui/Text";
 import Projects from "./components/Projects/Projects";
+import Services from "./components/Services/Services";
 
 function App() {
   return (
@@ -32,12 +33,13 @@ function App() {
             </h2>
             <Skills></Skills>
           </TabsContent>
+          {/* Projects */}
           <TabsContent>
-            <p className="text-lg">Welcome to Projects.</p>
             <Projects></Projects>
           </TabsContent>
+          {/* Services */}
           <TabsContent>
-            <p className="text-lg">Welcome to Services.</p>
+            <Services></Services>
           </TabsContent>
           <TabsContent>
             <p className="text-lg">This is the about section!</p>
