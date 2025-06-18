@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div>
-      <div className="w-full min-h-screen px-4 py-10 bg-background text-foreground">
+      <div className="w-full px-4 py-10 bg-background text-foreground">
         <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
           <TabsTriggerList>
             <TabsTrigger>skills</TabsTrigger>

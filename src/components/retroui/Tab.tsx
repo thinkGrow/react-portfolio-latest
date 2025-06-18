@@ -47,7 +47,7 @@ function TabsPanels({ children }: { children: React.ReactNode }) {
 
 function TabsContent({ children }: { children: React.ReactNode }) {
   return (
-    <Tab.Panel className="rounded-xl bg-card py-6 text-sm text-muted-foreground shadow-md h-[75vh]">
+    <Tab.Panel className="rounded-xl bg-card py-6 text-sm text-muted-foreground shadow-md h-[70vh]">
       {children}
     </Tab.Panel>
   );
