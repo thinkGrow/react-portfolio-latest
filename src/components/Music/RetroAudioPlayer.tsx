@@ -1,10 +1,12 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
+
+import React, { useRef, useState, useEffect, useCallback } from "react";
 
 const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [minimized, setMinimized] = useState(false);
 
   const handlePlay = () => audioRef.current?.play();
   const handlePause = () => audioRef.current?.pause();
@@ -21,15 +23,12 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
     setOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (dragging && playerRef.current) {
-        playerRef.current.style.left = `${e.clientX - offset.x}px`;
-        playerRef.current.style.top = `${e.clientY - offset.y}px`;
-      }
-    },
-    [dragging, offset],
-  );
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (dragging && playerRef.current) {
+      playerRef.current.style.left = `${e.clientX - offset.x}px`;
+      playerRef.current.style.top = `${e.clientY - offset.y}px`;
+    }
+  }, [dragging, offset]);
 
   const handleMouseUp = useCallback(() => {
     setDragging(false);
@@ -44,71 +43,101 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
     };
   }, [handleMouseMove, handleMouseUp]);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.25;
+    }
+  }, []);
+
   return (
     <div
       ref={playerRef}
-      className="absolute left-1/2 -translate-x-1/2 top-24 z-20 
-               bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg 
-               font-mono text-white text-sm"
-      style={{ width: "150px" }}
+      className="absolute left-1/2 -translate-x-1/2 top-24 z-20 bg-[#257656] border-4 border-[#6ee7b7] rounded-md shadow-lg font-mono text-white text-sm"
+      style={{ width: minimized ? "auto" : "150px" }}
     >
       {/* Drag handle */}
       <div
         onMouseDown={handleMouseDown}
         className="cursor-move bg-[#145a4d] px-3 py-1 flex items-center justify-between text-xs font-bold select-none"
       >
-        <span>🎵 MP3 Player</span>
-        <button
-          onClick={onClose}
-          className="ml-2 text-white hover:text-red-400 font-bold"
-        >
-          ✖
-        </button>
-      </div>
-
-      {/* Controls */}
-      <div className="p-3 flex flex-col items-center gap-2">
-        <audio ref={audioRef} src="/assets/music.mp3" preload="metadata" loop />
-        <div className="flex gap-2">
-          <button
-            onClick={handlePlay}
-            className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
-          >
-            ▶
-          </button>
-          <button
-            onClick={handlePause}
-            className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
-          >
-            ❚❚
-          </button>
-          <button
-            onClick={handleStop}
-            className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
-          >
-            ■
-          </button>
-        </div>
-
-        {/* Volume */}
-        <div className="w-full flex items-center gap-2 mt-2">
-          <label htmlFor="volume" className="text-xs">🔊</label>
-          <input
-            id="volume"
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            defaultValue="1"
-            onChange={(e) => {
-              if (audioRef.current) {
-                audioRef.current.volume = parseFloat(e.target.value);
-              }
+        {!minimized ? (
+          <>
+            <span>🎵 MP3 Player</span>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMinimized(true);
+                }}
+                className="text-white hover:text-yellow-300 font-bold"
+              >
+                🗕
+              </button>
+              <button
+                onClick={onClose}
+                className="text-white hover:text-red-400 font-bold"
+              >
+                ✖
+              </button>
+            </div>
+          </>
+        ) : (
+          <img
+            src="/assets/scyther.gif"
+            alt="Scyther"
+            className="w-6 h-6 mx-auto cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setMinimized(false);
             }}
-            className="w-full accent-[#6ee7b7]"
           />
-        </div>
+        )}
       </div>
+
+      {!minimized && (
+        <div className="p-3 flex flex-col items-center gap-2">
+          <audio ref={audioRef} src="/assets/music.mp3" preload="metadata" loop />
+          <div className="flex gap-2">
+            <button
+              onClick={handlePlay}
+              className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
+            >
+              ▶
+            </button>
+            <button
+              onClick={handlePause}
+              className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
+            >
+              ❚❚
+            </button>
+            <button
+              onClick={handleStop}
+              className="bg-[#6ee7b7] text-black px-2 py-1 border-2 border-black hover:bg-white transition"
+            >
+              ■
+            </button>
+          </div>
+
+          {/* Volume */}
+          <div className="w-full flex items-center gap-2 mt-2">
+            <label htmlFor="volume" className="text-xs">🔊</label>
+            <input
+              id="volume"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              defaultValue="0.25"
+              onChange={(e) => {
+                if (audioRef.current) {
+                  audioRef.current.volume = parseFloat(e.target.value);
+                }
+              }}
+              className="w-full accent-[#6ee7b7]"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
