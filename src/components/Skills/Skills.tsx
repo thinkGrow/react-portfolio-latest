@@ -15,7 +15,7 @@ const Skills = () => {
     <>
       {" "}
       <div className="space-y-4 px-4 md:h-150">
-        <h1 className="text-2xl">frontend dev</h1>
+        <h1 className="text-2xl">rubait reshad - frontend dev</h1>
         <h2 className="text-xl">
           skills
         </h2>

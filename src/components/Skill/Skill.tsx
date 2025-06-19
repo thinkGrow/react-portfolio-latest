@@ -6,12 +6,12 @@ export type SkillProps = {
   items: string[];
 };
 
-const Skill = ({ title, description, items }: SkillProps) => {
+const Skill = ({ title, items }: SkillProps) => {
   return (
     <Card className="rounded-2xl min-w-full sm:w-[48%] h-full">
       <Card.Header>
         <Card.Title>{title}</Card.Title>
-        <Card.Description>{description}</Card.Description>
+        {/* <Card.Description>{description}</Card.Description> */}
       </Card.Header>
       <Card.Content>
         <ul className="list-disc list-inside pl-2 grid grid-cols-2 lg:grid-cols-1">
