@@ -1,0 +1,42 @@
+/* cursor.css */
+
+/* 🟡 Base fallback cursor */
+body {
+  cursor: url("/assets/cursors/scyther.cur") 0 0, auto;
+}
+
+/* ✅ Interactive and RetroUI elements */
+button,
+a,
+input,
+select,
+textarea,
+label,
+.tab,
+.trigger,
+[role="button"],
+[role="tab"],
+[role="option"],
+[role="listbox"],
+[tabindex],
+[data-headlessui-state] {
+  cursor: url("/assets/cursors/scyther.cur") 0 0, pointer !important;
+}
+
+/* ✨ Optional hover glow effect */
+a:hover,
+button:hover,
+.trigger:hover,
+[role="tab"]:hover {
+  filter: drop-shadow(0 0 6px #6ee7b7);
+  transition: filter 0.2s ease;
+}
+
+/* 🎯 Focus feedback */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #6ee7b7;
+  background-color: rgba(110, 231, 183, 0.05);
+  transition: background-color 0.2s ease;
+}

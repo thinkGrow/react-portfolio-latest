@@ -5,6 +5,9 @@
 @import "tw-animate-css";
 
 /* styles.css */
+body {
+  cursor: url("/assets/cursors/cursor.png") 0 0, auto;
+}
 
 @theme {
   --font-head: "Archivo Black", sans-serif;

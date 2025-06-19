@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Tabs,
@@ -31,6 +32,21 @@ function App() {
     navigate(tabRoutes[index]);
     setShowMenu(false); // close menu on tab click
   };
+
+  // cursor
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const slash = document.createElement("div");
+      slash.className = "slash-effect";
+      slash.style.left = `${e.pageX - 16}px`;
+      slash.style.top = `${e.pageY - 16}px`;
+      document.body.appendChild(slash);
+      setTimeout(() => slash.remove(), 300);
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
 
   return (
     <div className="bg-background text-foreground min-h-screen lowercase">
