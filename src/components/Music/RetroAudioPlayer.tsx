@@ -74,11 +74,15 @@ const RetroAudioPlayer = () => {
         onMouseDown={handleMouseDown}
         className={`cursor-move ${
           minimized ? "" : "bg-[#145a4d]"
-        } px-3 py-1 flex items-center justify-between text-xs font-bold select-none`}
+        } px-3 py-1 flex sm:items-center sm:justify-between text-xs font-bold select-none`}
       >
         {!minimized ? (
           <>
-            <span>🎵 MP3 Player</span>
+            <div className="flex justify-between gap-2 pr-20 md:pr-0 pt-1.5 md:pt-0">
+              <div>🎵</div>
+              <div className="hidden md:inline"> MP3 player </div>
+            </div>
+
             <div className="flex items-center gap-1">
               <button
                 onClick={(e) => {
@@ -88,16 +92,10 @@ const RetroAudioPlayer = () => {
                     audioRef.current.play().catch(() => {});
                   }
                 }}
-                className="text-white hover:text-yellow-300 font-bold px-1"
+                className="text-white hover:text-yellow-300 font-bold text-xl md:text-base px-2"
               >
                 &minus;
               </button>
-              {/* <button
-                onClick={onClose}
-                className="text-white hover:text-red-400 font-bold"
-              >
-                ✖
-              </button> */}
             </div>
           </>
         ) : (
