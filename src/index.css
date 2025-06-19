@@ -5,8 +5,18 @@
 @import "tw-animate-css";
 
 /* styles.css */
-body {
-  cursor: url("/assets/cursors/cursor.png") 0 0, auto;
+
+body,
+button,
+a,
+input,
+select,
+textarea,
+[role],
+[data-headlessui-state],
+.trigger,
+.tab {
+  cursor: url("/assets/cursors/cursor.png") 0 0, pointer !important;
 }
 
 @theme {
