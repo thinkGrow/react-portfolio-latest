@@ -44,7 +44,12 @@ function TabsTrigger({ children }: { children: React.ReactNode }) {
   );
 }
 
-function TabsPanels({ children }: { children: React.ReactNode }) {
+function TabsPanels({
+  children,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return <Tab.Panels className="w-full px-4">{children}</Tab.Panels>;
 }
 

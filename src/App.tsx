@@ -104,25 +104,25 @@ function App() {
 
           {/* Always render panels */}
           <div className="pt-5">
-            <TabsPanels>
+            <TabsPanels className="pb-40">
               <div className="flex justify-center">
                 {showPlayer && (
                   <RetroAudioPlayer onClose={() => setShowPlayer(false)} />
                 )}
               </div>
-              <TabsContent>
+              <TabsContent className="mb-10 lg:h-[65vh]">
                 <Skills />
               </TabsContent>
-              <TabsContent className="mb-10">
+              <TabsContent className="mb-10]">
                 <Projects />
               </TabsContent>
-              <TabsContent>
+              <TabsContent className="mb-10 lg:h-[60vh]">
                 <Services />
               </TabsContent>
-              <TabsContent>
+              <TabsContent className="mb-10 lg:h-[60vh]">
                 <About />
               </TabsContent>
-              <TabsContent>
+              <TabsContent className="mb-10 lg:h-[60vh]">
                 <Contact />
               </TabsContent>
             </TabsPanels>
