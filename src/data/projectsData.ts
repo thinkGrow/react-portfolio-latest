@@ -6,7 +6,7 @@ const projectsData = [
     image: "/assets/portfolio/pokemon.png",
     items: ["React", "TypeScript", "Shadcn", "Tailwind", "responsive"],
     gitHub: "https://github.com/thinkGrow/react-portfolio-latest",
-    live: "http://rubaitreshad.surge.sh/",
+    live: "https://www.rubaitreshad.com",
   },
   {
     title: "A Study on Image Classification using RecurNets",
