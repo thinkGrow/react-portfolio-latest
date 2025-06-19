@@ -33,19 +33,12 @@ function App() {
     setShowMenu(false); // close menu on tab click
   };
 
-  // cursor
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const slash = document.createElement("div");
-      slash.className = "slash-effect";
-      slash.style.left = `${e.pageX - 16}px`;
-      slash.style.top = `${e.pageY - 16}px`;
-      document.body.appendChild(slash);
-      setTimeout(() => slash.remove(), 300);
-    };
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -107,7 +100,12 @@ function App() {
 
           {/* renders to phone */}
           <div>
-            <TabsPanels className="pb-40">
+            <TabsPanels className="pb-40 md:hidden">
+              <div className="flex justify-center">
+                {showPlayer && (
+                  <RetroAudioPlayer onClose={() => setShowPlayer(false)} />
+                )}
+              </div>
               <TabsContent className="h-auto lg:h-[65vh]">
                 <Skills />
               </TabsContent>
@@ -127,7 +125,7 @@ function App() {
           </div>
 
           {/*renders to desktop*/}
-          <div className="pt-5">
+          <div className="pt-5 sm:hidden md:visible">
             <TabsPanels className="pb-40">
               <div className="flex justify-center">
                 {showPlayer && (
