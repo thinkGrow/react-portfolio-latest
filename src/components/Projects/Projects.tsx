@@ -1,3 +1,5 @@
+// src/components/Projects/Projects.tsx
+
 import { useEffect, useState } from "react";
 import Project from "@/components/Project/Project";
 
@@ -5,6 +7,9 @@ type ProjectType = {
   title: string;
   description: string;
   items: string[];
+  image?: string;
+  gitHub?: string;
+  live?: string;
 };
 
 const Projects = () => {
@@ -29,9 +34,11 @@ const Projects = () => {
   if (error) return <p className="text-destructive">Error: {error}</p>;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 space-y-6 max-h-full px-4 lowercase">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 py-8 auto-rows-fr">
       {projects.map((project, index) => (
-        <Project key={index} {...project} />
+        <div className="h-full" key={index}>
+          <Project {...project} />
+        </div>
       ))}
     </div>
   );

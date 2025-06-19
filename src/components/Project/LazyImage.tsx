@@ -1,25 +1,19 @@
-import { useState } from "react";
+// src/components/Project/LazyImage.tsx
 
 type LazyImageProps = {
   src: string;
   alt: string;
+  className?: string;
 };
 
-const LazyImage = ({ src, alt }: LazyImageProps) => {
-  const [loaded, setLoaded] = useState(false);
-
+const LazyImage = ({ src, alt, className }: LazyImageProps) => {
   return (
-    <div className="flex h-full items-center justify-center w-1/4">
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        onLoad={() => setLoaded(true)}
-        className={`h-3/4 w-3/4 object-cover transition-all duration-700 ease-in-out ${
-          loaded ? "blur-0" : "blur-md scale-105"
-        }`}
-      />
-    </div>
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      className={`rounded-md ${className || ""}`}
+    />
   );
 };
 
