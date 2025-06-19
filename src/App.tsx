@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -126,13 +126,13 @@ function App() {
               <TabsContent className="mb-10">
                 <Projects />
               </TabsContent>
-              <TabsContent className="mb-10 lg:h-[60vh]">
+              <TabsContent className="mb-10 lg:h-[65vh]">
                 <Services />
               </TabsContent>
-              <TabsContent className="mb-10 lg:h-[60vh]">
+              <TabsContent className="mb-10 lg:h-[65vh]">
                 <About />
               </TabsContent>
-              <TabsContent className="mb-10 lg:h-[60vh]">
+              <TabsContent className="mb-40 lg:h-[65vh]">
                 <Contact />
               </TabsContent>
             </TabsPanels>
