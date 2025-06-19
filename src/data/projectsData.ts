@@ -12,7 +12,7 @@ const projectsData = [
     title: "A Study on Image Classification using RecurNets",
     description:
       "Deep learning’s rise brings high accuracy but also heavy environmental costs due to massive computation. I developed recurrent models that prioritize efficiency, enabling faster, greener use on lightweight devices like IoT and mobile platforms.",
-    image: "/assets/portfolio/rnn-thesis.png",
+    // image: "/assets/portfolio/rnn-thesis.png",
     items: [
       "PyTorch",
       "Nueural Networks",

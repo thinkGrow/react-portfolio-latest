@@ -69,11 +69,11 @@ const Project = ({
               {/* desc + bulletpoints */}
               <div className="flex flex-col justify-around h-full gap-10 p-1 w-3/4">
                 <div>{description}</div>
-                <ul className="flex flex-col md:flex-row gap-2 list-disc list-inside text-sm">
+                <div className="flex flex-col md:flex-row gap-2 text-sm">
                   {items.map((tech, index) => (
-                    <li key={index}>{tech}</li>
+                    <div className="bg-gray-200 rounded-full p-1" key={index}>{tech}</div>
                   ))}
-                </ul>
+                </div>
               </div>
               {image && title && <LazyImage src={image} alt={title} />}
             </div>
