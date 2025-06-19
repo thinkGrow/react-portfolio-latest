@@ -41,7 +41,7 @@ function App() {
 
       <div className="flex justify-center">
         {showPlayer && (
-          <RetroAudioPlayer onClose={() => setShowPlayer(false)} />
+          <RetroAudioPlayer />
         )}
       </div>
       <div className="w-full px-4 py-4 md:py-10 mb-30">

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 
-const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
+const RetroAudioPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const playerRef = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState(false);
@@ -88,16 +88,16 @@ const RetroAudioPlayer = ({ onClose }: { onClose: () => void }) => {
                     audioRef.current.play().catch(() => {});
                   }
                 }}
-                className="text-white hover:text-yellow-300 font-bold"
+                className="text-white hover:text-yellow-300 font-bold px-1"
               >
-                🗕
+                &minus;
               </button>
-              <button
+              {/* <button
                 onClick={onClose}
                 className="text-white hover:text-red-400 font-bold"
               >
                 ✖
-              </button>
+              </button> */}
             </div>
           </>
         ) : (
