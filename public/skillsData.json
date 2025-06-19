@@ -24,7 +24,7 @@
       "anaconda",
       "tensorBoard",
       "pyTorch",
-      "pandas"
+      "vercel"
     ]
   },
   {
@@ -46,12 +46,6 @@
   {
     "title": "languages",
     "description": "dev environment",
-    "items": [
-      "python",
-      "r",
-      "javascript",
-      "typescript",
-      "c++"
-    ]
+    "items": ["python", "r", "javascript", "typescript", "c++"]
   }
 ]
