@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -26,7 +26,7 @@ function App() {
 
   const currentTabIndex = tabRoutes.indexOf(location.pathname);
   const safeTabIndex = currentTabIndex === -1 ? 0 : currentTabIndex;
-  const [showPlayer, setShowPlayer] = useState(true);
+  // const [showPlayer, setShowPlayer] = useState(true);
 
   const handleTabChange = (index: number) => {
     navigate(tabRoutes[index]);
@@ -39,11 +39,7 @@ function App() {
         <source src="/assets/music.m4a" type="audio/mp4" />
       </audio>
 
-      <div className="flex justify-center">
-        {showPlayer && (
-          <RetroAudioPlayer />
-        )}
-      </div>
+      <div className="flex justify-center">{<RetroAudioPlayer />}</div>
       <div className="w-full px-4 py-4 md:py-10 mb-30">
         <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
           {/* Mobile hamburger button */}
