@@ -24,18 +24,41 @@ function TabsTriggerList({ children }: { children: React.ReactNode }) {
   );
 }
 
-function TabsTrigger({ children }: { children: React.ReactNode }) {
+// function TabsTrigger({ children }: { children: React.ReactNode }) {
+//   return (
+//     <Tab
+//       style={{ borderColor: "#6ee7b7" }}
+//       className={({ selected }) =>
+//         cn(
+//           "flex text-center px-4 py-2 border rounded font-head transition-all",
+//           "focus:outline-none focus:ring-0 focus-visible:ring-0 ring-0", //
+//           selected
+//             ? "bg-[#257656] text-white"
+//             : // ? "bg-[#061e15] text-white"
+//               "bg-gray-300 text-foreground hover:bg-muted/80 border-border"
+//         )
+//       }
+//     >
+//       {children}
+//     </Tab>
+//   );
+// }
+
+type TabsTriggerProps = {
+  children: React.ReactNode;
+} & React.ComponentProps<typeof Tab>;
+
+function TabsTrigger({ children, onClick }: TabsTriggerProps) {
   return (
     <Tab
-      style={{ borderColor: "#6ee7b7" }}
-      className={({ selected }) =>
+      onClick={onClick}
+      className={({ selected }: { selected: boolean }) =>
         cn(
           "flex text-center px-4 py-2 border rounded font-head transition-all",
-          "focus:outline-none focus:ring-0 focus-visible:ring-0 ring-0", //
+          "focus:outline-none focus:ring-0 focus-visible:ring-0 ring-0",
           selected
             ? "bg-[#257656] text-white"
-            : // ? "bg-[#061e15] text-white"
-              "bg-gray-300 text-foreground hover:bg-muted/80 border-border"
+            : "bg-gray-300 text-foreground hover:bg-muted/80 border-border"
         )
       }
     >
