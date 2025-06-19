@@ -22,11 +22,23 @@ const RetroAudioPlayer = () => {
     setOffset({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setDragging(true);
+    const rect = playerRef.current!.getBoundingClientRect();
+    const touch = e.touches[0];
+    setOffset({ x: touch.clientX - rect.left, y: touch.clientY - rect.top });
+  };
+
+  const handleMove = useCallback(
+    (e: MouseEvent | TouchEvent) => {
       if (dragging && playerRef.current) {
-        playerRef.current.style.left = `${e.clientX - offset.x}px`;
-        playerRef.current.style.top = `${e.clientY - offset.y}px`;
+        const clientX =
+          e instanceof TouchEvent ? e.touches[0].clientX : e.clientX;
+        const clientY =
+          e instanceof TouchEvent ? e.touches[0].clientY : e.clientY;
+
+        playerRef.current.style.left = `${clientX - offset.x}px`;
+        playerRef.current.style.top = `${clientY - offset.y}px`;
       }
     },
     [dragging, offset]
@@ -37,13 +49,18 @@ const RetroAudioPlayer = () => {
   }, []);
 
   useEffect(() => {
-    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mousemove", handleMove);
     document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("touchmove", handleMove);
+    document.addEventListener("touchend", handleMouseUp);
+
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mousemove", handleMove);
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleMove);
+      document.removeEventListener("touchend", handleMouseUp);
     };
-  }, [handleMouseMove, handleMouseUp]);
+  }, [handleMove, handleMouseUp]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -72,7 +89,8 @@ const RetroAudioPlayer = () => {
       {/* Drag handle */}
       <div
         onMouseDown={handleMouseDown}
-        className={`cursor-move ${
+        onTouchStart={handleTouchStart}
+        className={`cursor-move touch-none ${
           minimized ? "" : "bg-[#145a4d]"
         } px-3 py-1 flex sm:items-center sm:justify-between text-xs font-bold select-none`}
       >
