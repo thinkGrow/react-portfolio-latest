@@ -33,19 +33,17 @@ function App() {
     setShowMenu(false); // close menu on tab click
   };
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <div className="bg-background text-foreground min-h-screen lowercase">
       <audio ref={audioRef} loop>
         <source src="/assets/music.m4a" type="audio/mp4" />
       </audio>
+
+      <div className="flex justify-center">
+        {showPlayer && (
+          <RetroAudioPlayer onClose={() => setShowPlayer(false)} />
+        )}
+      </div>
       <div className="w-full px-4 py-4 md:py-10 mb-30">
         <Tabs defaultIndex={safeTabIndex} onChange={handleTabChange}>
           {/* Mobile hamburger button */}
@@ -101,11 +99,6 @@ function App() {
           {/* renders to phone */}
           <div>
             <TabsPanels className="pb-40 md:hidden">
-              <div className="flex justify-center">
-                {showPlayer && (
-                  <RetroAudioPlayer onClose={() => setShowPlayer(false)} />
-                )}
-              </div>
               <TabsContent className="h-auto lg:h-[65vh]">
                 <Skills />
               </TabsContent>
@@ -127,11 +120,6 @@ function App() {
           {/*renders to desktop*/}
           <div className="pt-5 sm:hidden md:visible">
             <TabsPanels className="pb-40">
-              <div className="flex justify-center">
-                {showPlayer && (
-                  <RetroAudioPlayer onClose={() => setShowPlayer(false)} />
-                )}
-              </div>
               <TabsContent className="mb-10 lg:h-[65vh]">
                 <Skills />
               </TabsContent>
