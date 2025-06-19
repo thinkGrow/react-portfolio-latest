@@ -26,45 +26,44 @@ const Project = ({
 }: ProjectProps) => {
   return (
     <Card className="rounded-xl flex flex-col h-full shadow-md">
+      <div className="flex justify-between p-2">
+        <h3 className="text-lg font-semibold">{title}</h3>
+
+        <div className="flex gap-2">
+          <Tooltip.Provider>
+            {gitHub && (
+              <Tooltip>
+                <Tooltip.Trigger asChild>
+                  <a href={gitHub} target="_blank" rel="noopener noreferrer">
+                    <Button className="rounded-full" variant="outline">
+                      <FaGithub />
+                    </Button>
+                  </a>
+                </Tooltip.Trigger>
+                <Tooltip.Content variant="solid">GitHub</Tooltip.Content>
+              </Tooltip>
+            )}
+            {live && (
+              <Tooltip>
+                <Tooltip.Trigger asChild>
+                  <a href={live} target="_blank" rel="noopener noreferrer">
+                    <Button className="rounded-full" variant="outline">
+                      <SiSitecore />
+                    </Button>
+                  </a>
+                </Tooltip.Trigger>
+                <Tooltip.Content variant="solid">Live</Tooltip.Content>
+              </Tooltip>
+            )}
+          </Tooltip.Provider>
+        </div>
+
+
+      </div>
       <div className="flex flex-col md:flex-row h-full gap-4 p-4">
         {/* Text Section */}
         <div className="flex-1 flex flex-col justify-between">
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold">{title}</h3>
-
-            <div className="flex gap-2">
-              <Tooltip.Provider>
-                {gitHub && (
-                  <Tooltip>
-                    <Tooltip.Trigger asChild>
-                      <a
-                        href={gitHub}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button className="rounded-full" variant="outline">
-                          <FaGithub />
-                        </Button>
-                      </a>
-                    </Tooltip.Trigger>
-                    <Tooltip.Content variant="solid">GitHub</Tooltip.Content>
-                  </Tooltip>
-                )}
-                {live && (
-                  <Tooltip>
-                    <Tooltip.Trigger asChild>
-                      <a href={live} target="_blank" rel="noopener noreferrer">
-                        <Button className="rounded-full" variant="outline">
-                          <SiSitecore />
-                        </Button>
-                      </a>
-                    </Tooltip.Trigger>
-                    <Tooltip.Content variant="solid">Live</Tooltip.Content>
-                  </Tooltip>
-                )}
-              </Tooltip.Provider>
-            </div>
-          </div>
+          <div className="flex justify-between items-center"></div>
 
           <p className="text-sm mt-4 mb-4 text-muted-foreground">
             {description}
