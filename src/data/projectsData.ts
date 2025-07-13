@@ -46,7 +46,7 @@ const projectsData = [
     description:
       "Built a React-based Digimon auction site to practice concepts like API integration, bidding logic, dynamic state updates, and real-time UI rendering.",
     image: "/assets/portfolio/digi-auction.png",
-    items: ["React", "Tailwind", "Non-responsive"],
+    items: ["React", "Tailwind", "Non-responsive", "API"],
     gitHub: "https://github.com/thinkGrow/digimon-Auction-react-api",
     live: "https://rubait-auction-gallery.surge.sh/",
   },

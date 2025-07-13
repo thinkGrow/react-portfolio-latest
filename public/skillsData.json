@@ -8,7 +8,9 @@
       "firebase",
       "react",
       "typescript",
-      "API"
+      "REST API",
+      "node/express",
+      "mongodb"
     ]
   },
   {
