@@ -4,7 +4,7 @@ const projectsData = [
     description:
       "A retro-styled personal portfolio built with React and RetroUI components. Fully responsive with animated transitions.",
     image: "/assets/portfolio/pokemon.png",
-    items: ["React", "TypeScript", "Shadcn", "Tailwind", "responsive"],
+    items: ["React", "TypeScript", "Shadcn", "Tailwind", "Responsive"],
     gitHub: "https://github.com/thinkGrow/react-portfolio-latest",
     live: "https://www.rubaitreshad.com",
   },
@@ -24,11 +24,20 @@ const projectsData = [
     live: "https://drive.google.com/file/d/1SDlD3_woTVnufhb9N7mB4JkD-vBgSNz6/view",
   },
   {
+    title: "Inchcape Survey",
+    description:
+      "Built a static website for Inchcape Survey & Inspection Co. Ltd., fully responsive",
+    image: "/assets/portfolio/inchcape.png",
+    items: ["TypeScript", "React", "Tailwind"],
+    gitHub: "",
+    live: "https://inchcapesurvey.com/",
+  },
+  {
     title: "NGen IT",
     description:
       "Built a dynamic website for NGenIT as part of a team. Handled backend development with Laravel and contributed to frontend design.",
     image: "/assets/portfolio/ngenit.png",
-    items: ["JavaScript", "Ajax", "Laravel", "Bootstrap"],
+    items: ["JavaScript", "Ajax", "Laravel", "PHP", "Bootstrap"],
     gitHub: "",
     live: "https://www.ngenitltd.com/",
   },
