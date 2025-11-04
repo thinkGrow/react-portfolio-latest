@@ -15,8 +15,16 @@ import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import TerminalFooter from "./components/TerminalFooter/TerminalFooter";
 import RetroAudioPlayer from "./components/Music/RetroAudioPlayer";
+import Note from "./components/Note/Note";
 
-const tabRoutes = ["/skills", "/projects", "/services", "/about", "/contact"];
+const tabRoutes = [
+  "/skills",
+  "/projects",
+  "/services",
+  "/about",
+  "/contact",
+  "/notes",
+];
 
 function App() {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -65,6 +73,7 @@ function App() {
               <TabsTrigger>services</TabsTrigger>
               <TabsTrigger>about</TabsTrigger>
               <TabsTrigger>contact</TabsTrigger>
+              <TabsTrigger>notes</TabsTrigger>
             </div>
           </TabsTriggerList>
 
@@ -88,6 +97,9 @@ function App() {
                 <TabsTrigger>
                   <span className="text-xs px-2 py-1">contact</span>
                 </TabsTrigger>
+                <TabsTrigger>
+                  <span className="text-xs px-2 py-1">notes</span>
+                </TabsTrigger>
               </div>
             )}
           </TabsTriggerList>
@@ -110,6 +122,9 @@ function App() {
               <TabsContent className="mb-10 lg:h-[60vh]">
                 <Contact />
               </TabsContent>
+              <TabsContent className="mb-10 lg:h-[60vh]">
+                <Note></Note>
+              </TabsContent>
             </TabsPanels>
           </div>
 
@@ -130,6 +145,9 @@ function App() {
               </TabsContent>
               <TabsContent className="mb-40 lg:h-[65vh]">
                 <Contact />
+              </TabsContent>
+              <TabsContent className="mb-40 lg:h-[65vh]">
+                <Note> </Note>
               </TabsContent>
             </TabsPanels>
           </div>
