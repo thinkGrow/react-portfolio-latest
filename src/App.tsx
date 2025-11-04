@@ -147,7 +147,7 @@ function App() {
                 <Contact />
               </TabsContent>
               <TabsContent className="mb-40 lg:h-[65vh]">
-                <Note> </Note>
+                <Note />
               </TabsContent>
             </TabsPanels>
           </div>
